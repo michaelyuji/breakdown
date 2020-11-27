@@ -1,0 +1,21 @@
+import glob
+import pandas as pd
+import numpy as np
+
+files = glob.glob(r"H:\M1\sendai\made_from_raw_data\1_sendai_r_dir_delete\*csv")
+print(files)
+print(len(files))
+
+dflist = []
+
+for i in range(54):
+    df = pd.read_csv(files[i],header=0)
+    #df1 = df[(df[2]==4)&(df[3]==0)&(df[4]==3)]
+    print(df)
+    
+    dflist.append(df)
+    
+dfset = pd.concat(dflist)
+
+print(dfset)
+dfset.to_csv("hobosendai_2.csv",index=False)
